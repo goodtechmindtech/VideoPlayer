@@ -6,10 +6,13 @@ import { useEffect } from "react";
 import Navbar from "../../../components/Navbar/Navbar";
 import Sidebar from "../../../components/Sidebar/Sidebar";
 import { Box, Button, Step, StepLabel, Stepper, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const steps = ["Choose Player", "Video Content", "Get Embed"];
 
 export default function AddContentUnit() {
+  const navigate = useNavigate();
+
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -18,6 +21,10 @@ export default function AddContentUnit() {
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleFinish = () => {
+    navigate("/contentUnits");
   };
 
   return (
@@ -166,7 +173,7 @@ export default function AddContentUnit() {
 
                   <Button onClick={handleNext}>{activeStep <= steps.length - 2 && "Next"}</Button>
 
-                  <Button onClick={handleNext}>{activeStep === steps.length - 1 && "Finish"}</Button>
+                  <Button onClick={handleFinish}>{activeStep === steps.length - 1 && "Finish"}</Button>
                 </Box>
               </div>
             </div>

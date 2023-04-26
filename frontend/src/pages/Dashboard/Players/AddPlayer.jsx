@@ -52,6 +52,10 @@ export default function AddPlayer() {
     }
   }, [preRollAd, postRollAd]);
 
+  const handleSavePlayer = () => {
+    navigate("/");
+  };
+
   return (
     <div className="addPlayer">
       <Navbar />
@@ -105,6 +109,9 @@ export default function AddPlayer() {
           />
         </div>
       </div>
+      <span className="newPlayerButton" style={{ marginTop: "30px" }} onClick={handleSavePlayer}>
+        Save Player
+      </span>
     </div>
   );
 }
